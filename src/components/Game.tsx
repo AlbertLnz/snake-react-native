@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { Colors } from '../styles/colors'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { GestureEventType, Direction, Coordinate } from '../types/types'
+import { GestureEventType, Direction, Coordinate, MOVE_INTERVAL } from '../types/types'
 import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION } from '../utils/constants'
 import Snake from './Snake'
 
@@ -13,6 +13,36 @@ export default function Game():JSX.Element {
   const [food, setFood] = useState<Coordinate>(FOOD_INITIAL_POSITION) // (x,y)
   const [isGameOver, setIsGameOver] = useState<boolean>(false) // boolean
   const [isPaused, setIsPaused] = useState<boolean>(false) // boolean
+
+  useEffect(() => {
+    if(!isGameOver) {
+      const intervalId = setInterval(() => {
+        !isPaused && moveSnake()
+      }, MOVE_INTERVAL)
+
+      return () => clearInterval(intervalId)
+    }
+  }, [snake, isGameOver, isPaused])
+  
+
+  const moveSnake = () => {
+    const snakeHead = snake[0]
+    const newHead = { ...snakeHead } // creating a copy of 'snakeHead'
+
+    switch (direction) {
+      case Direction.UP:
+        newHead.y -= 1; break;
+      case Direction.DOWN:
+        newHead.y += 1; break;
+      case Direction.LEFT:
+        newHead.x -= 1; break;
+      case Direction.RIGHT:
+        newHead.x += 1; break;
+      default: break;
+    }
+
+    setSnake([newHead, ...snake])
+  }
 
   const handlerGesture = (event: GestureEventType) => {
     // console.log(event.nativeEvent)
