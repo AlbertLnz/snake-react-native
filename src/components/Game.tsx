@@ -6,7 +6,24 @@ import { PanGestureHandler } from 'react-native-gesture-handler'
 export default function Game():JSX.Element {
   
   const handlerGesture = (event: any) => {
-    console.log(event.nativeEvent)
+    // console.log(event.nativeEvent)
+    const { translationX, translationY } = event.nativeEvent
+
+    // X Axis:
+    if(Math.abs(translationX) > Math.abs(translationY)) {
+      if(translationX > 0) {
+        // moving right
+      } else {
+        // moving left
+      }
+    } else {
+      if(translationY > 0) {
+        // Moving down:
+      } else {
+        // Moving up
+      }
+    }
+
   }
   
   return (
