@@ -2,10 +2,11 @@ import * as React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Colors } from '../styles/colors'
 import { PanGestureHandler } from 'react-native-gesture-handler'
+import { GestureEventType } from '../types/types'
 
 export default function Game():JSX.Element {
   
-  const handlerGesture = (event: any) => {
+  const handlerGesture = (event: GestureEventType) => {
     // console.log(event.nativeEvent)
     const { translationX, translationY } = event.nativeEvent
 
