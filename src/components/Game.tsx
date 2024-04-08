@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { Colors } from '../styles/colors'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { GestureEventType, Direction, Coordinate, MOVE_INTERVAL } from '../types/types'
-import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION } from '../utils/constants'
+import { GestureEventType, Direction, Coordinate } from '../types/types'
+import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION, MOVE_INTERVAL } from '../utils/constants'
 import Snake from './Snake'
 
 export default function Game():JSX.Element {

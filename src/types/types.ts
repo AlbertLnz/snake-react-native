@@ -16,5 +16,3 @@ export enum Direction {
   UP = 'up',
   DOWN = 'down'
 }
-
-export const MOVE_INTERVAL = 50
