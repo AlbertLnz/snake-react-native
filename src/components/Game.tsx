@@ -3,12 +3,15 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { Colors } from '../styles/colors'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import { GestureEventType, Direction, Coordinate } from '../types/types'
-import { SNAKE_INITIAL_POSITION } from '../utils/constants'
+import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION } from '../utils/constants'
 
 export default function Game():JSX.Element {
   
-  const [direction, setDirection] = useState<Direction>(Direction.RIGHT) // 
+  const [direction, setDirection] = useState<Direction>(Direction.RIGHT) // string
   const [snake, setSnake] = useState<Coordinate[]>(SNAKE_INITIAL_POSITION) // Array of coords
+  const [food, setFood] = useState<Coordinate>(FOOD_INITIAL_POSITION) // (x,y)
+  const [isGameOver, setIsGameOver] = useState<boolean>(false) // boolean
+  const [isPaused, setIsPaused] = useState<boolean>(false) // boolean
 
   const handlerGesture = (event: GestureEventType) => {
     // console.log(event.nativeEvent)
