@@ -6,6 +6,7 @@ import { GestureEventType, Direction, Coordinate } from '../types/types'
 import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION, MOVE_INTERVAL, GAME_BOUNDS } from '../utils/constants'
 import Snake from './Snake'
 import { checkGameOver } from '../utils/CheckGameOver'
+import Food from './Foods'
 
 export default function Game():JSX.Element {
   
@@ -76,6 +77,7 @@ export default function Game():JSX.Element {
       <SafeAreaView style={styles.container}>
         <View style={styles.boundaries}>
           <Snake snake={snake} />
+          <Food x={food.x} y={food.y}></Food>
         </View>
       </SafeAreaView>
     </PanGestureHandler>
