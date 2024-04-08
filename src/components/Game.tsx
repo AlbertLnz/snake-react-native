@@ -41,7 +41,7 @@ export default function Game():JSX.Element {
       default: break;
     }
 
-    setSnake([newHead, ...snake])
+    setSnake([newHead, ...snake.slice(0, -1)])
   }
 
   const handlerGesture = (event: GestureEventType) => {
