@@ -10,3 +10,5 @@ export const GAME_BOUNDS = {
   yMin: 0,
   yMax: 63
 }
+
+export const SCORE_INCREMENT = 10
