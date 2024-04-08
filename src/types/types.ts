@@ -4,3 +4,15 @@ export interface GestureEventType {
     translationY: number
   }
 }
+
+export interface Coordinate {
+  x: number
+  y: number
+}
+
+export enum Direction {
+  RIGHT = 'right',
+  LEFT = 'left',
+  UP = 'up',
+  DOWN = 'down'
+}

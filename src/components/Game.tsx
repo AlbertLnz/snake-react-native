@@ -1,11 +1,15 @@
-import * as React from 'react'
+import { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Colors } from '../styles/colors'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { GestureEventType } from '../types/types'
+import { GestureEventType, Direction, Coordinate } from '../types/types'
+import { SNAKE_INITIAL_POSITION } from '../utils/constants'
 
 export default function Game():JSX.Element {
   
+  const [direction, setDirection] = useState<Direction>(Direction.RIGHT) // 
+  const [snake, setSnake] = useState<Coordinate[]>(SNAKE_INITIAL_POSITION) // Array of coords
+
   const handlerGesture = (event: GestureEventType) => {
     // console.log(event.nativeEvent)
     const { translationX, translationY } = event.nativeEvent
