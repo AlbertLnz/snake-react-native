@@ -20,15 +20,15 @@ export default function Game():JSX.Element {
     // X Axis:
     if(Math.abs(translationX) > Math.abs(translationY)) {
       if(translationX > 0) {
-        // moving right
+        setDirection(Direction.RIGHT)
       } else {
-        // moving left
+        setDirection(Direction.LEFT)
       }
     } else {
       if(translationY > 0) {
-        // Moving down:
+        setDirection(Direction.DOWN)
       } else {
-        // Moving up
+        setDirection(Direction.UP)
       }
     }
 
