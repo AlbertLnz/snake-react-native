@@ -3,8 +3,9 @@ import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { Colors } from '../styles/colors'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import { GestureEventType, Direction, Coordinate } from '../types/types'
-import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION, MOVE_INTERVAL } from '../utils/constants'
+import { FOOD_INITIAL_POSITION, SNAKE_INITIAL_POSITION, MOVE_INTERVAL, GAME_BOUNDS } from '../utils/constants'
 import Snake from './Snake'
+import { checkGameOver } from '../utils/CheckGameOver'
 
 export default function Game():JSX.Element {
   
@@ -28,6 +29,11 @@ export default function Game():JSX.Element {
   const moveSnake = () => {
     const snakeHead = snake[0]
     const newHead = { ...snakeHead } // creating a copy of 'snakeHead'
+
+    if(checkGameOver(snakeHead, GAME_BOUNDS)) {
+      setIsGameOver(true)
+      return
+    }
 
     switch (direction) {
       case Direction.UP:
